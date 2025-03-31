@@ -26,7 +26,7 @@ const TaskBoard = ({ openForm, setOpenForm }) => {
     const destCol = destination.droppableId;
 
     if (sourceCol === destCol) {
-      // Rearranging items within the same column
+
       const updatedTasks = [...tasks[sourceCol]];
       const [movedTask] = updatedTasks.splice(source.index, 1);
       updatedTasks.splice(destination.index, 0, movedTask);
@@ -36,7 +36,7 @@ const TaskBoard = ({ openForm, setOpenForm }) => {
         [sourceCol]: updatedTasks,
       }));
     } else {
-      // Moving items between columns
+
       const sourceTasks = [...tasks[sourceCol]];
       const destTasks = [...tasks[destCol]];
       const [movedTask] = sourceTasks.splice(source.index, 1);

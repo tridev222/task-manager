@@ -26,7 +26,7 @@ const TaskForm = ({ open, handleClose, addTask, isEditing = false, taskData = {}
     }
   }, [isEditing, taskData]);
 
-  const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0]; 
 
   const handleSubmit = () => {
     if (!title.trim()) return;
@@ -72,7 +72,7 @@ const TaskForm = ({ open, handleClose, addTask, isEditing = false, taskData = {}
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
           InputLabelProps={{ shrink: true }}
-          inputProps={{ min: today }} // Prevent past dates
+          inputProps={{ min: today }} 
         />
 
         <FormControl fullWidth sx={{ mb: 2 }}>
