@@ -1,4 +1,11 @@
 # React + Vite
+preview
+![image](https://github.com/user-attachments/assets/ca9c493c-14c5-49ba-ac8c-c8a27c83bfd3)
+
+--- 
+dark mode
+![image](https://github.com/user-attachments/assets/b0241526-fb6d-48b6-a766-7967ef9e32a4)
+ drag drop left justtt................
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
