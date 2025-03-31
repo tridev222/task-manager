@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import TaskBoard from "./components/TaskBoard";
 
-function App() {
-  const [count, setCount] = useState(0)
+const customTheme = (mode) =>
+  createTheme({
+    palette: {
+      mode,
+      primary: { main: "#fca311" },
+      background: { default: mode === "dark" ? "#14213d" : "#e5e5e5", paper: mode === "dark" ? "#1e1e1e" : "#ffffff" },
+      text: { primary: mode === "dark" ? "#ffffff" : "#000000" },
+    },
+    typography: { fontFamily: "Inter, sans-serif" },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: { borderRadius: 8, textTransform: "none", fontWeight: "bold" },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: { borderRadius: 8, padding: 16 },
+        },
+      },
+    },
+  });
+
+const App = () => {
+  const [mode, setMode] = useState("dark");
+  const [openForm, setOpenForm] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <ThemeProvider theme={customTheme(mode)}>
+      <CssBaseline />
+      <Navbar mode={mode} setMode={setMode} setOpenForm={setOpenForm} />
+      <TaskBoard openForm={openForm} setOpenForm={setOpenForm} />
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
